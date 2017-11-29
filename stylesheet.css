@@ -1,0 +1,21 @@
+body{
+    background-color:aliceblue
+}
+header {
+    background-image: url("/images/team.jpg");
+    background-position:center;
+    background-repeat: no-repeat;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top: 325px;
+    
+}
+
+h1{
+    text-align: center;
+    color:red;
+}
+
+span {
+    color:white;
+}
