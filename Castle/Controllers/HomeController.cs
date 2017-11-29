@@ -29,20 +29,20 @@ namespace Castle.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Testimonial(string submission)
+        public IActionResult Testimonial(Testimonial newSubmission)
         {
-            Models.Testimonial newpost = new Models.Testimonial(submission);
-            Models.Testimonial.AddToMasterList(newpost);
+            
+            Models.Testimonial.AddToMasterList(newSubmission);
 
 
-            ViewBag["Testimonial"] = Models.Testimonial.TestimonialMasterList;
+            ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList;
             return View();
         }
         [HttpGet]
-        public IActionResult Tesimonial()
+        public IActionResult Testimonial()
         {
 
-            ViewBag["Testimonial"] = Models.Testimonial.TestimonialMasterList;
+            ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList;
             return View();
         }
 

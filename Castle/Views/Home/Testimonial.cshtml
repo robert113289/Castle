@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Testimonial";
+}
+
+<h2>Testimonial</h2>
+
+<form method="post">
+    <label> I am a:
+        <input type="text" name="identity" />
+    </label>
+
+    <label> New Submission:
+        <input type="text" name="body" />
+    </label>
+    <input type="submit"/>
+
+</form>
+
+@foreach(var testimonial in ViewBag.Testimonials)
+{
+    <h3>@testimonial.Identity</h3>
+        <p>@testimonial.Body</p>
+}
+
