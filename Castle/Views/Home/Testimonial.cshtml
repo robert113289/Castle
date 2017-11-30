@@ -6,15 +6,21 @@
 <h2>Testimonial</h2>
 
 <form method="post">
-    <label> I am a:
-        <input type="text" name="identity" />
-    </label>
-
-    <label> New Submission:
-        <input type="text" name="body" />
-    </label>
-    <input type="submit"/>
-
+    <div class="form-group">
+        <label>
+            I am a: <br/>
+            <input class="radio-inline .form-control" type="radio" name="identity" value="Player" /> Player
+            <input class="radio-inline .form-control " type="radio" name="identity" value="Fan" /> Fan
+            <input class="radio-inline .form-control " type="radio" name="identity" value="Captain" /> Captain
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            New Submission:
+            <input type="text" name="body" />
+        </label>
+        <input type="submit" />
+    </div>
 </form>
 
 @foreach(var testimonial in ViewBag.Testimonials)
