@@ -29,6 +29,14 @@ namespace Castle.Controllers
             return View();
         }
         [HttpPost]
+        public IActionResult Contact(PotentialPlayer newPotentialPlayer)
+        {
+            Models.PotentialPlayer.Add(newPotentialPlayer);
+            ViewBag.Message = "Thanks for submitting your request," + newPotentialPlayer.Name +". We will be in contact with you.";
+            ViewBag.Player = newPotentialPlayer;
+            return View();
+        }
+        [HttpPost]
         public IActionResult Testimonial(Testimonial newSubmission)
         {
             
