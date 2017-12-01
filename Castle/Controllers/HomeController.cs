@@ -33,7 +33,7 @@ namespace Castle.Controllers
         {
             Models.PotentialPlayer.Add(newPotentialPlayer);
             ViewBag.Message = "Thanks for submitting your request," + newPotentialPlayer.Name +". We will be in contact with you.";
-            ViewBag.Player = newPotentialPlayer;
+            ViewBag.PlayerName = newPotentialPlayer.Name;
             return View();
         }
         [HttpPost]
