@@ -10,8 +10,10 @@ namespace Castle.Controllers
 {
     public class UserController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            User currentUser = UserData.GetbyId(id);
+            ViewBag.userName = currentUser.Username;
             return View();
         }
         public IActionResult Add()
@@ -19,20 +21,29 @@ namespace Castle.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Add(User user, string verify)
+        public IActionResult Add(User user, string password2)
         {
-            if (user.Password == null || !user.Password.Equals(verify))
+            ViewBag.username = user.Username;
+            ViewBag.email = user.Email;
+
+            if (user.Password == null || !user.Password.Equals(password2))
             {
-                ViewBag.username = user.Username;
-                ViewBag.email = user.Email;
+                
                 ViewBag.message = "Passwords do not match";
                 return View();
             }
-            return View("Index");
+
+            if (user.Password.Length < 5 || user.Password.Length >15 || user.Password.Count(c=> Char.IsDigit(c)) < 1)
+            {
+                
+                ViewBag.message = "Your password must be between 5 and 15 characters long and contain atleast 1 number";
+                return View();
+            }
+                
+            UserData.Add(user);
+            return Redirect("Index/"+ user.UserId);
         }
 
     }
-    
-
 
 }
