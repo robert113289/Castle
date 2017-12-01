@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2>Add</h2>
+<div class="container">
+    <div class="row">
+        <div class="center-block">
+            <form method="post">
+                @if(ViewBag.message != null)
+                {
+                    <div class="alert-danger">
+                        <strong>@ViewBag.message</strong>
+                    </div>
+
+                }
+
+                <label>Username:<input class="form-control" type ="text" name="username" value="@ViewBag.username"/></label>
+                <label>Email:<input class="form-control" type="email" name="email" value="@ViewBag.email" /></label>
+                <label>Password:<input class="form-control" type="password" name="password" /></label>
+                <label>Verify Password:<input class="form-control" type="password" name="password2" /></label>
+                <button class="btn btn-primary" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
