@@ -31,11 +31,23 @@ namespace Castle.Controllers
         [HttpPost]
         public IActionResult Contact(PotentialPlayer newPotentialPlayer)
         {
-            Models.PotentialPlayer.Add(newPotentialPlayer);
-            ViewBag.Message = "Thanks for submitting your request," + newPotentialPlayer.Name +". We will be in contact with you.";
-            ViewBag.PlayerName = newPotentialPlayer.Name;
-            return View();
+            if (!PotentialPlayer.PotentialPlayers.Contains(newPotentialPlayer))
+            {
+                Models.PotentialPlayer.Add(newPotentialPlayer);
+                ViewBag.Message = "Thanks for submitting your request," + newPotentialPlayer.Name + ". We will be in contact with you.";
+                ViewBag.PlayerName = newPotentialPlayer.Name;
+                return View();
+
+            }
+            else
+            {
+                newPotentialPlayer.Update(newPotentialPlayer) 
+            }
+
+            
         }
+
+
         [HttpPost]
         public IActionResult Testimonial(Testimonial newSubmission)
         {

@@ -27,5 +27,11 @@ namespace Castle.Models
 
         }
 
+        public static void Update(PotentialPlayer updatedPlayer)
+        {
+            PotentialPlayer playerToUpdate = PotentialPlayers(x => updatedPlayer)
+            this.Name = updatedPlayer.Name;
+        }
+
     }
 }
