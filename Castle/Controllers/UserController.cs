@@ -14,10 +14,13 @@ namespace Castle.Controllers
         {
             User currentUser = UserData.GetbyId(id);
             ViewBag.userName = currentUser.Username;
+
+            ViewBag.PotentialPlayers = PotentialPlayer.PotentialPlayers;
             return View();
         }
         public IActionResult Add()
         {
+            
             return View();
         }
         [HttpPost]

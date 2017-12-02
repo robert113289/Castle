@@ -31,20 +31,11 @@ namespace Castle.Controllers
         [HttpPost]
         public IActionResult Contact(PotentialPlayer newPotentialPlayer)
         {
-            if (!PotentialPlayer.PotentialPlayers.Contains(newPotentialPlayer))
-            {
+        
                 Models.PotentialPlayer.Add(newPotentialPlayer);
-                ViewBag.Message = "Thanks for submitting your request," + newPotentialPlayer.Name + ". We will be in contact with you.";
+                ViewBag.Message = "Thanks for submitting your request, " + newPotentialPlayer.Name + ". We will be in contact with you.";
                 ViewBag.PlayerName = newPotentialPlayer.Name;
                 return View();
-
-            }
-            else
-            {
-                newPotentialPlayer.Update(newPotentialPlayer) 
-            }
-
-            
         }
 
 
@@ -55,14 +46,14 @@ namespace Castle.Controllers
             Models.Testimonial.AddToMasterList(newSubmission);
 
 
-            ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList;
+            ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList.OrderByDescending(x => x.PostNumber);
             return View();
         }
         [HttpGet]
         public IActionResult Testimonial()
         {
 
-            ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList;
+            ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList.OrderByDescending(x => x.PostNumber);
             return View();
         }
 

@@ -6,3 +6,36 @@
 <h2>Hello @ViewBag.userName</h2>
 
 
+@if (ViewBag.PotentialPlayers != null)
+{
+    <div class="container">
+        <h1>Potential Players</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Years Experience</td>
+                        <td>Position</td>
+                        <td>Previous Teams</td>
+                        <td>Email</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var potentialPlayer in ViewBag.PotentialPlayers)
+                {
+                        <tr>
+                            <td>@potentialPlayer.Name</td>
+                            <td>@potentialPlayer.Experience</td>
+                            <td>@potentialPlayer.Position</td>
+                            <td>@potentialPlayer.PreviousExperience</td>
+                            <td><a href="mailto:@potentialPlayer.Email">@potentialPlayer.Email</a><br /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+} 
+
+

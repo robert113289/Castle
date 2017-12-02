@@ -18,6 +18,7 @@ namespace Castle.Models
 
         public PotentialPlayer()
         {
+            Id = nextId;
             nextId++;
         }
 
@@ -26,12 +27,5 @@ namespace Castle.Models
             PotentialPlayers.Add(newPotentialPlayer);
 
         }
-
-        public static void Update(PotentialPlayer updatedPlayer)
-        {
-            PotentialPlayer playerToUpdate = PotentialPlayers(x => updatedPlayer)
-            this.Name = updatedPlayer.Name;
-        }
-
     }
 }
