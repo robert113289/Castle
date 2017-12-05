@@ -45,7 +45,7 @@ namespace Castle.Controllers
             
             Models.Testimonial.AddToMasterList(newSubmission);
 
-
+            ViewBag.Message = "Thanks for submitting! Your testimonial is being reviewed by one of our admins.";
             ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList.OrderByDescending(x => x.PostNumber);
             return View();
         }

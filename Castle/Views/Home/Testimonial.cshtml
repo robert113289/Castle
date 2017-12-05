@@ -35,19 +35,28 @@
                 <fieldset class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </fieldset>
+                @if (ViewBag.message != null)
+                {
+                    <br />
+                    <div class="alert-success">
+                        <strong>@ViewBag.message</strong>
+                    </div>
+                }
             </form>
         </div>
         <div class="col-sm-6">
-            @foreach (var testimonial in ViewBag.Testimonials)
+            <div class="well">
+                @foreach (var testimonial in ViewBag.Testimonials)
             {
                 if (testimonial.IsApproved)
                 {
-                    <h2 class="testimonial head">@testimonial.Identity</h2>
-                    <p class="testimonial body">@testimonial.Body</p>
+                        <h2 class="testimonial head">@testimonial.Identity</h2>
+                        <p class="testimonial body">@testimonial.Body</p>
+
+                    }
 
                 }
-
-            }
+            </div>
         </div>
     </div>
 </div>
