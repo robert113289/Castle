@@ -10,12 +10,14 @@ namespace Castle.Models
         public string Body { get; set; }
         public string Identity { get; set; }
         public int PostNumber { get; internal set; }
+        public bool IsApproved { get; set; }
         private static int NextPostNumber = 1;
         public static List<Testimonial> TestimonialMasterList = new List<Testimonial>();
 
         public Testimonial()
         {
             PostNumber = NextPostNumber;
+            IsApproved = false;
             NextPostNumber++;
         }
 
@@ -24,6 +26,10 @@ namespace Castle.Models
             TestimonialMasterList.Add(post);
         }
 
+        public static Testimonial GetById(int id)
+        {
+            return TestimonialMasterList.Single(c => c.PostNumber == id);
+        }
 
     }
 }

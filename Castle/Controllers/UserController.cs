@@ -12,12 +12,25 @@ namespace Castle.Controllers
     {
         public ActionResult Index(int id)
         {
-            User currentUser = UserData.GetbyId(id);
-            ViewBag.userName = currentUser.Username;
-
+            if (id != 0)
+            {
+                User currentUser = UserData.GetbyId(id);
+                ViewBag.userName = currentUser.Username;
+            }
             ViewBag.PotentialPlayers = PotentialPlayer.PotentialPlayers;
+
+            ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList.OrderByDescending(x => x.PostNumber);
             return View();
         }
+        public IActionResult TestimonialManagement(int id)
+        {
+          
+            Testimonial testimonial = Testimonial.GetById(id);
+            testimonial.IsApproved = true;
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Add()
         {
             

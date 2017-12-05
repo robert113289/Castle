@@ -40,8 +40,13 @@
         <div class="col-sm-6">
             @foreach (var testimonial in ViewBag.Testimonials)
             {
-                <h2 class="testimonial head">@testimonial.Identity</h2>
+                if (testimonial.IsApproved)
+                {
+                    <h2 class="testimonial head">@testimonial.Identity</h2>
                     <p class="testimonial body">@testimonial.Body</p>
+
+                }
+
             }
         </div>
     </div>
