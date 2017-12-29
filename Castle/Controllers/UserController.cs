@@ -55,9 +55,10 @@ namespace Castle.Controllers
                 ViewBag.message = "Your password must be between 5 and 15 characters long and contain atleast 1 number";
                 return View();
             }
-                
+               
             UserData.Add(user);
             return Redirect("Index/"+ user.UserId);
+
         }
 
     }
