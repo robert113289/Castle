@@ -7,25 +7,21 @@ namespace Castle.Models
 {
     public class PotentialPlayer
     {
-        public static List<PotentialPlayer> PotentialPlayers = new List<PotentialPlayer>();
+        //public static List<PotentialPlayer> PotentialPlayers = new List<PotentialPlayer>();
+
+        public int PotentialPlayerID { get; set; }
+
         public string Name { get; set; }
         public string Email { get; set; }
         public int Experience { get; set; }
         public string Position { get; set; }
         public string PreviousExperience { get; set; }
-        public int Id { get; set; }
-        private static int nextId = 0;
+        
 
         public PotentialPlayer()
         {
-            Id = nextId;
-            nextId++;
+ 
         }
 
-        public static void Add(PotentialPlayer newPotentialPlayer)
-        {
-            PotentialPlayers.Add(newPotentialPlayer);
-
-        }
     }
 }

@@ -17,7 +17,7 @@ namespace Castle.Models
 
         public static User GetbyId(int id)
         {
-            return Users.Single(x => x.UserId == id);
+            return Users.Single(x => x.ID == id);
         }
 
         public static List<User> GetAllUsers()

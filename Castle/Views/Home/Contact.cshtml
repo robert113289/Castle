@@ -2,80 +2,87 @@
     ViewData["Title"] = "Contact";
 
 }
+
 <h2>@ViewData["Title"]</h2>
 
 
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col">
             <address>
                 <strong>Leadership:</strong> <a href="mailto:castleultimate.stl@gmail.com">Castleultimate.stl@gmail.com</a><br />
                 <strong>Facebook:</strong> <a href="https://www.facebook.com/CastleUltimate/">CastleUltimate</a><br />
                 <strong>USA Ultimate:</strong> <a href="http://play.usaultimate.org/teams/events/Eventteam/?TeamId=rD9UoNKD8oQGc6S54qIJmv3iZpFw3z59N%2fp%2bbC9nBEQ%3d">Roster & Schedule</a><br />
             </address>
+            
         </div>
-        <div class="col-sm-6">
-            <h4>Tryouts alert request</h4>
-            <p>Want to be alerted when the next tryouts are finalized?</p>
+        <div class="col">
+            <h4>2019 Tryouts Alert Request</h4>
+            <p>You can register for 2018 tryouts <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgXKoE_BYS4ugWqe08GXC_u_ZrOOut5conOpwcb65SiASXTA/viewform">here</a>, Want to be alerted when the 2019 tryouts are finalized?</p>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label>Name<input type="text" class="form-control" name="name" placeholder="Name"></label>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Email<input type="email" class="form-control" name="email" email placeholder="Email"></label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>
+                            Experience<select class="form-control" name="experience">
+                                <option value="1">1 Year</option>
+                                <option value="2">2 Years</option>
+                                <option value="3">3 Years</option>
+                                <option value="4">4 Years</option>
+                                <option value="5">5 Years</option>
+                                <option value="6">6 Years</option>
+                                <option value="7">7 Years</option>
+                                <option value="8">8 Years</option>
+                                <option value="9">9 Years</option>
+                                <option value="alot">10+ Years</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group col">
+                        <label>
+                            Position<select class="form-control" name="position">
+                                <option value="Offensive Cutter">Offensive Cutter</option>
+                                <option value="Offensive Handler">Offensive Handler</option>
+                                <option value="Defensive Cutter">Defensive Cutter</option>
+                                <option value="Defensive Handler">Defensive Handler</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Who have you played for?<input class="form-control" type="text" name="previousExperience" /></label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Contact Me!</button>
+
+                        @if (ViewBag.message != null)
+                          {
+                            <br />
+                            <div class="alert-success">
+                                <strong>@ViewBag.message</strong>
+                            </div>
+                          }
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            
         </div>
     </div>
 </div>
-<form method="post">
-    <div class="container">
-        <div class="form-row">
-            <div class="form-group col-sm-offset-6 col-sm-2">
-                <label>Name<input type="text" class="form-control" name="name" placeholder="Name"></label>
-            </div>
-            <div class="form-group col-sm-4">
-                <label>Email<input type="email" class="form-control" name="email" email placeholder="Email"></label>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-sm-offset-6 col-sm-2">
-                <label>
-                    Experience<select class="form-control" name="experience">
-                        <option value="1">1 Years</option>
-                        <option value="2">2 Years</option>
-                        <option value="3">3 Years</option>
-                        <option value="4">4 Years</option>
-                        <option value="5">5 Years</option>
-                        <option value="6">6 Years</option>
-                        <option value="7">7 Years</option>
-                        <option value="8">8 Years</option>
-                        <option value="9">9 Years</option>
-                        <option value="alot">10+ Years</option>
-                    </select>
-                </label>
-            </div>
-            <div class="form-group col-sm-4">
-                <label>Position<select class="form-control" name="position">
-                        <option value="Offensive Cutter">Offensive Cutter</option>
-                        <option value="Offensive Handler">Offensive Handler</option>
-                        <option value="Defensive Cutter">Defensive Cutter</option>
-                        <option value="Defensive Handler">Defensive Handler</option>
-                    </select>
-                </label>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-sm-offset-6 col-sm-6">
-                <label>Who have you played for?<input class="form-control" type="text" name="previousExperience"/></label>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-sm-offset-6 col-sm-6">
-                <button type="submit" class="btn btn-primary">Contact Me!</button>
-                
-                @if (ViewBag.message != null)
-                {
-                    <br />
-                    <div class="alert-success">
-                        <strong>@ViewBag.message</strong>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
-</form>
 

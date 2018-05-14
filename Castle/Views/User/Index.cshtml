@@ -39,21 +39,26 @@
             </div>
         </div>
 }
-<div class="row">
-    <div class="col-sm-6">
-        <h1>Testimonials</h1>
+@if(ViewBag.Testimonials != null)
+{
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Testimonials</h1>
             @foreach (var testimonial in ViewBag.Testimonials)
             {
                 if (!testimonial.IsApproved)
                 {
-                <h2 class="testimonial head">@testimonial.Identity</h2>
-                <p class="testimonial body">@testimonial.Body</p>
-                <a asp-controller="User" asp-action="TestimonialManagement" asp-route-id="@testimonial.PostNumber">Approve</a>
+                    <h2 class="testimonial head">@testimonial.Identity</h2>
+                    <p class="testimonial body">@testimonial.Body</p>
+                    <a asp-controller="User" asp-action="TestimonialManagement" asp-route-id="@testimonial.PostNumber">Approve</a>
                 }
             }
 
+        </div>
     </div>
-</div>
+}
+
+
 
 
 

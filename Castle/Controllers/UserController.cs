@@ -5,37 +5,47 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Castle.Models;
+using Microsoft.AspNetCore.Authorization;
+using Castle.Data;
 
 namespace Castle.Controllers
 {
     public class UserController : Controller
     {
-        public ActionResult Index(int id)
+        private readonly CastleDbContext context;
+        public UserController(CastleDbContext dbcontext)
         {
-            if (id != 0)
-            {
-                User currentUser = UserData.GetbyId(id);
-                ViewBag.userName = currentUser.Username;
-            }
-            ViewBag.PotentialPlayers = PotentialPlayer.PotentialPlayers;
+            context = dbcontext;
+        }
 
-            ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList.OrderByDescending(x => x.PostNumber);
+        //[Authorize]
+        public ActionResult Index()
+        {
+            //if (id != 0)
+            //{
+            //    User currentUser = UserData.GetbyId(id);
+            //    ViewBag.userName = currentUser.Username;
+            //}
+            ViewBag.PotentialPlayers = context.PotentialPlayers.ToList();
+            ViewBag.Testimonials = null;
+            //ViewBag.Testimonials = Models.Testimonial.TestimonialMasterList.OrderByDescending(x => x.ID);
             return View();
         }
-        public IActionResult TestimonialManagement(int id)
-        {
+        //public IActionResult TestimonialManagement(int id)
+        //{
           
-            Testimonial testimonial = Testimonial.GetById(id);
-            testimonial.IsApproved = true;
+        //    Testimonial testimonial = Testimonial.GetById(id);
+        //    testimonial.IsApproved = true;
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
         public IActionResult Add()
         {
             
             return View();
         }
+
         [HttpPost]
         public IActionResult Add(User user, string password2)
         {
@@ -57,7 +67,7 @@ namespace Castle.Controllers
             }
                
             UserData.Add(user);
-            return Redirect("Index/"+ user.UserId);
+            return Redirect("Index/"+ user.ID);
 
         }
 
